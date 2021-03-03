@@ -261,7 +261,7 @@ config MT_BTCOEX_CONCURRENT
 config MT7603E_LED_CONTROL_SUPPORT
 	bool "LED Support"
 	depends on WIFI_DRIVER
-    default n
+    default y
 
 config MT7603E_SINGLE_SKU_V2
     bool "Single SKU V2"
