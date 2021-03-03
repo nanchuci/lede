@@ -653,10 +653,10 @@ function mtkwifi.__setup_apcli(cfgs, devname, mainidx, subidx)
         local flags = tonumber(mtkwifi.read_pipe("cat /sys/class/net/"..apcli_name.."/flags 2>/dev/null")) or 0
         apcli.state = flags%2 == 1 and "up" or "down"
         if not ssid or ssid == "" then
-            apcli.status = "Disconnected"
+            apcli.status = "未连接"
         else
             apcli.ssid = ssid
-            apcli.status = "Connected"
+            apcli.status = "已连接"
         end
         apcli.devname = apcli_name
         apcli.bssid = mtkwifi.read_pipe("cat /sys/class/net/"..apcli_name.."/address 2>/dev/null") or "?"
@@ -825,8 +825,10 @@ end
 
 
 function mtkwifi.scan_ap(vifname)
+    os.execute("ifconfig "..vifname.." down")
+    os.execute("ifconfig "..vifname.." up")
     os.execute("iwpriv "..vifname.." set SiteSurvey=0")
-    os.execute("sleep 10") -- depends on your env
+    os.execute("sleep 4") -- depends on your env
     local scan_result = mtkwifi.read_pipe("iwpriv "..vifname.." get_site_survey 2>/dev/null")
 
     local aplist = {}
