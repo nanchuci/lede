@@ -326,7 +326,7 @@ msgid "Policy assigned"
 msgstr "分配的策略"
 
 msgid "Protocol"
-msgstr "协议"
+msgstr "通信协议"
 
 msgid "Recovery interval"
 msgstr "故障恢复间隔"
@@ -696,6 +696,9 @@ msgstr "提交间隔"
 msgid "Compress database"
 msgstr "压缩数据库"
 
+msgid "Configuration"
+msgstr "配置"
+
 msgid "Conn."
 msgstr "连接。"
 
@@ -772,6 +775,9 @@ msgstr "主机名：<big id=\"bubble-hostname\">example.org</big>"
 msgid "IPv4 vs. IPv6"
 msgstr "IPv4 与 IPv6"
 
+msgid "IPv6"
+msgstr "IPv6"
+
 msgid "Interval"
 msgstr "周期"
 
@@ -831,6 +837,9 @@ msgstr "仅统计来自或目标为这些子网的连接流量。"
 
 msgid "Preallocate database"
 msgstr "预分配数据库"
+
+msgid "Protocol"
+msgstr "协议"
 
 msgid "Protocol Mapping"
 msgstr "协议映射"
@@ -933,6 +942,9 @@ msgstr ""
 
 msgid "Enables IGMP snooping on this bridge"
 msgstr "在此桥接上启用 IGMP snooping 组播（多播）"
+
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
 
 msgid "Action"
 msgstr "动作"
