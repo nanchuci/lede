@@ -64,7 +64,8 @@ ramips_setup_interfaces()
 	dlink,dir-867-a1|\
 	dlink,dir-878-a1|\
 	dlink,dir-882-a1|\
-	motorola,mr2600)
+	motorola,mr2600|\
+	zte,e8820s)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 ra0 rai0" "wan"
 		;;
 	phicomm,k2p|\
@@ -96,9 +97,6 @@ ramips_setup_interfaces()
 		ucidef_set_interface_lan "eth0.2 ra0 rai0"
 		;;
 	*)
-		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" "wan"
-		;;
-	zte,e8820s)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" "wan"
 		;;
 	esac
