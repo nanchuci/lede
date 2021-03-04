@@ -45,15 +45,7 @@ local debug = 0
 <form method="post" name="cbi" action="<%=luci.dispatcher.build_url("admin", "network", "wifi", "apcli_cfg", devname, vifname)%>" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')" autocomplete="off">
 
     <fieldset class="cbi-section" id="vif-cfg-apcli">
-        <legend> <a name="apcli_scan_section">Wireless Repeater - <%=devname.."@"..vifname%> </a></legend>
-        <pre> Manually setup apcli0 connection:
-        iwpriv <%=vifname%> set ApCliEnable=0              // disable sta mode first
-        iwpriv <%=vifname%> set ApCliAuthMode=             // root ap authentication mode
-        iwpriv <%=vifname%> set ApCliEncrypType=           // root ap encryption type
-        iwpriv <%=vifname%> set ApCliWPAPSK=               // root ap password
-        iwpriv <%=vifname%> set ApCliWirelessMode=         // root ap wifi mode
-        iwpriv <%=vifname%> set ApCliSsid=                 // root ap ssid
-        iwpriv <%=vifname%> set ApCliEnable=1              // enable sta mode</pre>
+        <legend> <a name="apcli_scan_section">无线中继 - <%=devname.."@"..vifname%> </a></legend>
         <br />
         <p class="left">
             <input id="scan" type="button" class="cbi-button cbi-button-find" onclick="get_ap_list('<%=vifname%>')" value="扫描网络" />
