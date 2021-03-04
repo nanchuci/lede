@@ -653,10 +653,10 @@ function mtkwifi.__setup_apcli(cfgs, devname, mainidx, subidx)
         local flags = tonumber(mtkwifi.read_pipe("cat /sys/class/net/"..apcli_name.."/flags 2>/dev/null")) or 0
         apcli.state = flags%2 == 1 and "up" or "down"
         if not ssid or ssid == "" then
-            apcli.status = "未连接"
+            apcli.status = "Disconnected"
         else
             apcli.ssid = ssid
-            apcli.status = "已连接"
+            apcli.status = "Connected"
         end
         apcli.devname = apcli_name
         apcli.bssid = mtkwifi.read_pipe("cat /sys/class/net/"..apcli_name.."/address 2>/dev/null") or "?"
