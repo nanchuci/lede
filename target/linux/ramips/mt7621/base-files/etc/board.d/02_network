@@ -64,8 +64,7 @@ ramips_setup_interfaces()
 	dlink,dir-867-a1|\
 	dlink,dir-878-a1|\
 	dlink,dir-882-a1|\
-	motorola,mr2600|\
-	zte,e8820s)
+	motorola,mr2600)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 ra0 rai0" "wan"
 		;;
 	phicomm,k2p|\
@@ -98,6 +97,10 @@ ramips_setup_interfaces()
 		;;
 	*)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" "wan"
+		;;
+	zte,e8820s)
+		ucidef_add_switch "switch0" \
+			"0:lan:1" "1:lan:2" "2:lan:3" "3:lan:4" "4:wan" "6@eth0"
 		;;
 	esac
 }
@@ -186,6 +189,9 @@ ramips_setup_macs()
 	zbtlink,zbt-wg3526-32m)
 		label_mac=$(mtd_get_mac_binary factory 0x4)
 		;;
+	zte,e8820s)
+		lan_mac=$(mtd_get_mac_binary factory 0xe000)
+		wan_mac=$lan_mac
 	esac
 
 	[ -n "$lan_mac" ] && ucidef_set_interface_macaddr "lan" $lan_mac
