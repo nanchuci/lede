@@ -14,7 +14,7 @@
 		led-failsafe = &led_sys;
 		led-running = &led_power;
 		led-upgrade = &led_power;
-		label-mac-device = &ethernet;
+		label-mac-device = &gmac0;
 	};
 
 	chosen {
@@ -138,7 +138,8 @@
 };
 
 &pcie0 {
-	mt76@0,0 {
+	wifi@0,0 {
+		compatible = "pci14c3,7603";
 		reg = <0x0000 0 0 0 0>;
 		mediatek,mtd-eeprom = <&factory 0x0000>;
 		ieee80211-freq-limit = <2400000 2500000>;
@@ -146,31 +147,51 @@
 };
 
 &pcie1 {
-	mt76@0,0 {
+	wifi@0,0 {
+		compatible = "pci14c3,7662";
 		reg = <0x0000 0 0 0 0>;
 		mediatek,mtd-eeprom = <&factory 0x8000>;
 		ieee80211-freq-limit = <5000000 6000000>;
 	};
 };
 
-&ethernet {
-	compatible = "mediatek,ralink-mt7621-eth";
-	mediatek,switch = <&gsw>;
+&gmac0 {
 	mtd-mac-address = <&factory 0xe006>;
 };
 
 &switch0 {
-	/delete-property/ compatible;
-	phy-mode = "rgmii";
-};
+	ports {
+		port@0 {
+			status = "okay";
+			label = "lan1";
+		};
 
-&gsw {
-	compatible = "mediatek,ralink-mt7621-gsw";
+		port@1 {
+			status = "okay";
+			label = "lan2";
+		};
+
+		port@2 {
+			status = "okay";
+			label = "lan3";
+		};
+
+		port@3 {
+			status = "okay";
+			label = "lan4";
+		};
+
+		port@4 {
+			status = "okay";
+			label = "wan";
+			mtd-mac-address = <&factory 0xe000>;
+		};
+	};
 };
 
 &state_default {
 	gpio {
-		groups = "jtag", "uart2", "uart3";
+		groups = "jtag", "uart2", "uart3", "wdt";
 		function = "gpio";
 	};
 };
